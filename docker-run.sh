@@ -1,6 +1,9 @@
 #!/bin/bash
 
-if systemctl --user is-active --quiet docker-desktop; then
+status=$(systemctl --user is-active docker-desktop)
+echo "docker-desktop status: $status"
+
+if [ "$status" = "active" ]; then
 	echo "Docker has been already started. Exiting script"
 	exit 0
 fi
